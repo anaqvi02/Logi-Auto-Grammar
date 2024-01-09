@@ -1,26 +1,34 @@
 import os
+from openai import OpenAI
 from dotenv import load_dotenv
 import pynput
 from pynput.keyboard import Key, Controller
 import pyperclip
-from openai import OpenAI
+import platform
+import time
+
+if platform.system() == 'Darwin': 
+    key = Key.cmd
+else:
+    key = Key.ctrl
 
 load_dotenv() 
-client = OpenAI(base_url=os.getenv('API_END_POINT'), api_key=os.getenv('API_KEY'))  # get the API_END_POINT and API_KEY from .env
+client = OpenAI(base_url=os.getenv('API_END_POINT'), api_key=os.getenv('API_KEY')) 
 keyboard = Controller()
 x = ""
 def on_activate():
-    keyboard.press(Key.cmd)
+    keyboard.press(key)
     keyboard.press('c')
-    keyboard.release(Key.cmd)
+    time.sleep(0.1)
     keyboard.release('c')
-
+    keyboard.release(key)
+    time.sleep(0.1)
     x = pyperclip.paste()
     print("\nlipboard:",x)
     print("Starting AI call...")
     if x != "None":
         completion = client.chat.completions.create(
-            model="gpt-3.5-turbo-0613",
+            model=os.getenv('MODEL_ID'),
             messages=[
                 {"role": "system",
                 "content": "You are the grammar-bot. You take in a sentence, and return the sentence back with corrected grammar. You only return the sentence, nothing else. You only return the corrected sentence. Example: (user) 'Hello guyz' Mistral: 'Hello guys'"},
