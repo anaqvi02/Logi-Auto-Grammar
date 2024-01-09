@@ -63,7 +63,7 @@ class SettingsWindow:
     def exit(self):
         self.icon.stop()
         self.root.after(500, self.root.quit)
-        
+
     def start_hotkey(self):
         self.hotkey_process = subprocess.Popen(['python', 'hotkey.py'])
 
@@ -78,7 +78,7 @@ class SettingsWindow:
     def save(self):
         self.api_endpoint = self.api_endpoint_entry.get()
         self.api_key = self.api_key_entry.get()
-        self.model_id = self.api_key_entry.get()
+        self.model_id = self.model_id_entry.get()
 
         with open('.env', 'w') as f:
             f.write(f'API_END_POINT={self.api_endpoint}\n')
