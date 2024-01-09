@@ -46,7 +46,7 @@ class SettingsWindow:
 
         self.hotkey_process = None
 
-        self.icon = pystray.Icon("name", Image.open("icon.jpg"), "My System Tray Icon", self.create_menu())
+        self.icon = pystray.Icon("name", Image.open("icon.jpg"), "Icon", self.create_menu())
         threading.Thread(target=self.icon.run).start()
 
         self.root.protocol("WM_DELETE_WINDOW", self.on_close)
