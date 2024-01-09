@@ -1,8 +1,12 @@
+import os
+from dotenv import load_dotenv
 import pynput
 from pynput.keyboard import Key, Controller
 import pyperclip
 from openai import OpenAI
-client = OpenAI(base_url='https://api.naga.ac/v1', api_key='key-here') #NAGA KEY HERE
+
+load_dotenv() 
+client = OpenAI(base_url=os.getenv('API_END_POINT'), api_key=os.getenv('API_KEY'))  # get the API_END_POINT and API_KEY from .env
 keyboard = Controller()
 x = ""
 def on_activate():

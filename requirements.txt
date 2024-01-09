@@ -1,0 +1,4 @@
+python-dotenv==0.19.1
+pynput==1.7.4
+pyperclip==1.8.2
+openai==0.27.0
