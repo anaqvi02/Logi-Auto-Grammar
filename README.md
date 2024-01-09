@@ -12,7 +12,7 @@ This project is a Python application that uses a hotkey to trigger an AI call to
     pip install -r requirements.txt
     ```
 
-3. Remand the `.env.example` to `.env` in the root directory of the project and add your OpenAI API endpoint, API key, and model ID:
+3. Rename the `.env.example` to `.env` in the root directory of the project and add your OpenAI API endpoint, API key, and model ID:
 
     ```env
     API_END_POINT=<your-api-endpoint>
